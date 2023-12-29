@@ -40,6 +40,10 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 
 Route::get('/ticket', [TicketController::class, 'index'])->middleware('auth')->name('ticket.index');
-Route::delete('/tiket/{id}', [TicketController::class, 'destroy'])->name('tiket.destroy');
+Route::delete('/tiket/{id}', [TicketController::class, 'destroy'])->name('ticket.destroy');
+
+Route::get('/ticket/{id}', [TicketController::class, 'show'])->name('ticket.show');
+Route::get('/ticket/{id}/edit', [TicketController::class, 'edit'])->name('ticket.edit');
+Route::put('/ticket/{id}', [TicketController::class, 'update'])->name('ticket.update');
 
 Route::get('/pendaftaran', [pendaftaranController::class, 'index'])->middleware('auth');

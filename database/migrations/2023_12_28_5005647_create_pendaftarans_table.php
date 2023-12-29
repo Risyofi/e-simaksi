@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('tanggal_turun');
             $table->enum('status', ['Paid', 'Unpaid', 'Expired']);
             $table->string('name');
-            $table->integer('no_hp');
+            $table->bigInteger('no_hp');
             $table->enum('hubungan', ['Suami', 'Istri', 'Orang Tua', 'Anak', 'Saudara']);
             $table->text('alamat');
             $table->text('qr_code')->nullable();

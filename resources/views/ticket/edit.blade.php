@@ -6,7 +6,7 @@
     <div class="container" style="margin-top: 200px">
         <h1>Edit Tiket</h1>
 
-        <form action="{{ route('tiket.update', ['id' => $registration->id]) }}" method="POST">
+        <form action="{{ route('ticket.update', encrypt($registration->id)) }}" method="post">
             @csrf
             @method('PUT')
 
@@ -16,14 +16,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="tanggal_naik">Tanggal Naik</label>
-                        <input type="date" class="form-control" value="{{ $registration->tanggal_naik }}">
+                        <input type="date" class="form-control" name="tanggal_naik" value="{{ $registration->tanggal_naik }}">
                         <span class="text-danger">@error('tanggal_naik'){{ $message }}@enderror</span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="tanggal_turun">Tanggal Turun</label>
-                        <input type="date" class="form-control" value="{{ $registration->tanggal_turun }}" >
+                        <input type="date" class="form-control" name="tanggal_turun" value="{{ $registration->tanggal_turun }}" >
                         <span class="text-danger">@error('tanggal_turun'){{ $message }}@enderror</span>
                     </div>
                 </div>
@@ -33,14 +33,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nama_trail">Nama Trail</label>
-                        <select name="nama_trail" class="form-control">
-                            @foreach ($jalurs as $trail)
+                        <select name="trail_id" class="form-control">
+                            @foreach ($trails as $trail)
                                 <option value="{{ $trail->id }}" {{ $registration->trail->id == $trail->id ? 'selected' : '' }}>
                                     {{ $trail->name }}
                                 </option>
                             @endforeach
                         </select>
-                        <span class="text-danger">@error('nama_trail'){{ $message }}@enderror</span>
+                        <span class="text-danger">@error('trail_id'){{ $message }}@enderror</span>
                     </div>
                 </div>
             </div>
@@ -52,14 +52,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nama_pendaki">Nama Pendaki</label>
-                        <input type="text" class="form-control" value="{{ $registration->pendaki->name }}">
+                        <input type="text" class="form-control" name="nama_pendaki" value="{{ $registration->pendaki->name }}">
                         <span class="text-danger">@error('nama_pendaki'){{ $message }}@enderror</span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="no_identitas">Nomor Identitas</label>
-                        <input type="text" class="form-control" value="{{ $registration->pendaki->no_identitas }}" >
+                        <input type="text" class="form-control" name="no_identitas" value="{{ $registration->pendaki->no_identitas }}" >
                         <span class="text-danger">@error('no_identitas'){{ $message }}@enderror</span>
                     </div>
                 </div>
@@ -68,14 +68,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nama_pendaki">Tempat Lahir</label>
-                        <input type="text" class="form-control" value="{{ $registration->pendaki->tempat_lahir }}">
+                        <input type="text" class="form-control" name="tempat_lahir" value="{{ $registration->pendaki->tempat_lahir }}">
                         <span class="text-danger">@error('tempat_lahir'){{ $message }}@enderror</span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="no_identitas">Tanggal Lahir</label>
-                        <input type="text" class="form-control" value="{{ $registration->pendaki->tanggal_lahir }}" >
+                        <input type="text" class="form-control" name="tanggal_lahir" value="{{ $registration->pendaki->tanggal_lahir }}" >
                         <span class="text-danger">@error('tanggal_lahir'){{ $message }}@enderror</span>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="no_identitas">Nomor Hp</label>
-                        <input type="text" class="form-control" value="{{ $registration->pendaki->no_hp }}" >
+                        <input type="text" class="form-control" name="no_hp" value="{{ $registration->pendaki->no_hp }}" >
                         <span class="text-danger">@error('no_hp'){{ $message }}@enderror</span>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="">Alamat Lengkap</label>
-                        <input type="text" class="form-control" value="{{ $registration->pendaki->alamat }}">
+                        <input type="text" class="form-control" name="alamat" value="{{ $registration->pendaki->alamat }}">
                         <span class="text-danger">@error('alamat'){{ $message }}@enderror</span>
                     </div>
                 </div>
@@ -118,15 +118,15 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="">Nama</label>
-                        <input type="text" class="form-control" value="{{ $registration->name }}">
+                        <input type="text" class="form-control" name="nama_kontak_darurat" value="{{ $registration->name }}">
                         <span class="text-danger">@error('nama_kontak_darurat'){{ $message }}@enderror</span>
                     </div>
                 </div>
                 <div class="col-md-6">
                    <div class="form-group">
                        <label for="">Nomor Hp</label>
-                       <input type="text" class="form-control" value="{{ $registration->no_hp }}">
-                       <span class="text-danger">@error('no_hp'){{ $message }}@enderror</span>
+                       <input type="text" class="form-control" name="no_hp_kontak_darurat" value="{{ $registration->no_hp }}">
+                       <span class="text-danger">@error('no_hp_kontak_darurat'){{ $message }}@enderror</span>
                    </div>
                </div>
             </div>
@@ -135,14 +135,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="">Alamat</label>
-                        <input type="text" class="form-control" value="{{ $registration->alamat }}">
-                        <span class="text-danger">@error('alamat'){{ $message }}@enderror</span>
+                        <input type="text" class="form-control" name="alamat_kontak_darurat" value="{{ $registration->alamat }}">
+                        <span class="text-danger">@error('alamat_kontak_darurat'){{ $message }}@enderror</span>
                     </div>
                 </div>
                 <div class="col-md-6">
                    <div class="form-group">
                        <label for="">Hubungan</label>
-                        <select class="form-control" value="{{ $registration->hubungan }}>
+                        <select class="form-control" name="hubungan_kontak_darurat" value="{{ $registration->hubungan }}>
                             <option value="" selected>Hubungan</option>
                             <option value="Suami">Suami</option>
                             <option value="Istri">Istri</option>
@@ -150,12 +150,22 @@
                             <option value="Orang Tua">Orang Tua</option>
                             <option value="Saudara">Saudara</option>
                         </select>
-                       <span class="text-danger">@error('hubungan'){{ $message }}@enderror</span>
+                       <span class="text-danger">@error('hubungan_kontak_darurat'){{ $message }}@enderror</span>
                    </div>
                </div>
             </div>
 
-            <button type="submit" class="btn btn-primary mt-5 mb-5 d-block mx-auto">Simpan</button>
+            <div>
+                <div class="d-flex justify-content-between">
+                    <a href="/ticket">
+                      <button type="button" class="btn btn-md btn-secondary mt-5 mb-5">Back</button>
+                    </a>
+                    
+                    <button type="submit" class="btn btn-md btn-primary mt-5 mb-5">Simpan</button>
+                  </div>
+                  
+            </div>
+            
         </form>
     </div>
 @endsection

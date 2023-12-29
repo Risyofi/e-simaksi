@@ -3,6 +3,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
 
         @foreach ($trails as $trail)
+        <a href="/jalur">
             <div class="col">
                 <div class="card">
                     <img src="img/gogik.png" class="card-img-top" alt="...">
@@ -12,6 +13,7 @@
                     </div>
                 </div>
             </div>
+        </a>
         @endforeach   
     </div>
 

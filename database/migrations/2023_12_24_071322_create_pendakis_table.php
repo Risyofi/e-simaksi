@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('pendakis', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('no_identitas');
+            $table->bigInteger('no_identitas');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->enum('jenis_kelamin', ['Pria', 'Perempuan']);
-            $table->integer('no_hp');
+            $table->bigInteger('no_hp');
             $table->text('alamat');
             $table->timestamps();
         });

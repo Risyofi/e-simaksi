@@ -64,18 +64,18 @@ class MultiStepForm extends Component
         if($this->currentStep == 1){
             $this->validate([
                 'tanggal_naik'=>'required|date',
-                'tanggal_turun'=>'required|date',
+                'tanggal_turun'=>'required|date|after_or_equal:tanggal_naik',
                 'trail'=>'required'
             ]);
         }
         elseif($this->currentStep == 2){
               $this->validate([
                  'nama_pendaki'=>'required',
-                 'no_identitas'=>'required|numeric|min:5|max:20',
+                 'no_identitas'=>'required|numeric|digits_between:15,16',
                  'tempat_lahir'=>'required',
                  'tanggal_lahir'=>'required',
                  'jenis_kelamin'=>'required',
-                 'no_hp'=>'required|numeric|max:15',
+                 'no_hp'=>'required|numeric|digits_between:10,13',
                  'alamat'=>'required'
 
               ]);
@@ -83,7 +83,7 @@ class MultiStepForm extends Component
         elseif($this->currentStep == 3){
               $this->validate([
                   'nama_kontak_darurat'=>'required',
-                  'noHP_kontak_darurat'=>'required|numeric|max:15',
+                  'noHP_kontak_darurat'=>'required|numeric|digits_between:10,13',
                   'alamat_kontak_darurat'=>'required',
                   'hubungan'=>'required'
               ]);
@@ -115,7 +115,7 @@ class MultiStepForm extends Component
 
         $this->currentStep = 4;
 
-        session()->flash('message', 'Pendaftaran berhasil!');
+        session()->flash('success', 'Pendaftaran berhasil!');
 
     }
 
@@ -158,15 +158,5 @@ class MultiStepForm extends Component
         }
 
         return $randomString;
-    }
-
-    public function tanggalMax()
-    {
-        if ($this->tanggal_naik) {
-            $tanggalMax = date('Y-m-d', strtotime($this->tanggal_naik . ' + 3 days'));
-            return $tanggalMax;
-        }
-
-        return null;
     }
 }

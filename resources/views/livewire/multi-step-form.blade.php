@@ -226,8 +226,12 @@
            @if ($currentStep == 3)
                 <button type="submit" class="btn btn-md btn-primary">Submit</button>
            @endif
-               
-              
+
+           @if ($currentStep == 4)
+                <a href="/ticket" class="btn btn-md btn-info">My Ticket</a>
+            @endif
+
+           
         </div>
 
     </form>

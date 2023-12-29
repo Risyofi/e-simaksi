@@ -22,9 +22,9 @@
           </div>
           @endif
 
-          @if(session()->has('loginError'))
+          @if(session()->has('danger'))
           <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('loginError') }}
+            {{ session('danger') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
           @endif
@@ -47,6 +47,11 @@
                   <div class="form-floating">
                     <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
                     <label for="password">Password</label>
+                    @error('email')
+                    <div class="invalid-feedback">
+                      {{ $message}}
+                    </div>
+                    @enderror
                   </div>
                   <button class="btn btn-primary w-100 py-2" type="submit">Login</button>
                 </form>

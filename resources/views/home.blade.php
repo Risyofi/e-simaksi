@@ -9,38 +9,6 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   
   <title>E-Simaksi | {{ $title }}</title>
-  <style>
-    .wrapper {
-      padding: 20px;
-      margin-top: 20px;
-      backdrop-filter: blur(8px) saturate(180%);
-      -webkit-backdrop-filter: blur(8px) saturate(180%);
-      background-color: rgba(148, 168, 216, 0.45);
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.125);
-      box-shadow: 10px 0 10px rgba(0, 0, 0, 0.1), -10px 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .divider {
-      border-top: 1px solid #000000;
-      margin: 10px 0;
-    }
-    ol {
-      font-size: 1.2em;
-      color: #555;
-      margin-bottom: 15px;
-    }
-
-    ol li {
-      margin-bottom: 10px;
-    }
-
-    ol li span {
-      font-size: 1.5em;
-      font-weight: bold;
-      color: #0a0a0a;
-    }
-  </style>
   
 </head>
 <body>
@@ -97,6 +65,7 @@
 </div>
 
 @include('partials.footer')
+
 <script>
   function animateCount(element, targetValue, duration) {
     $({ Counter: 0 }).animate(

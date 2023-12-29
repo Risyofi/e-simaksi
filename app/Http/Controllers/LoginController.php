@@ -22,17 +22,17 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended('/')->with('success', 'Login successful!');
         }
 
-        return back()->with('loginError', 'Login failed!');
+        return back()->with('danger', 'Login failed!');
     }
 
     public function logout() {
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/')->with('success', 'Logout successful!');
 
     }
 }
