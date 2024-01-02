@@ -209,30 +209,19 @@
 
         @endif
 
-        <div class="action-buttons d-flex justify-content-between pt-2 pb-2">
-
-           @if ($currentStep == 1)
-               <div></div>
-           @endif
-
-           @if ($currentStep == 2 || $currentStep == 3 || $currentStep == 4)
-               <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Back</button>
-           @endif
-           
-           @if ($currentStep == 1 || $currentStep == 2)
-               <button type="button" class="btn btn-md btn-success" wire:click="increaseStep()">Next</button>
-           @endif
-           
-           @if ($currentStep == 3)
-                <button type="submit" class="btn btn-md btn-primary">Submit</button>
-           @endif
-
-           @if ($currentStep == 4)
-                <a href="/ticket" class="btn btn-md btn-info">My Ticket</a>
+        <div class="text-right mt-4">
+            @if ($currentStep > 1)
+                <button wire:click="previousStep" class="btn btn-primary">Back</button>
             @endif
-
-           
+    
+            @if ($currentStep < $totalSteps)
+                <button wire:click="nextStep" class="btn btn-primary ml-2">Next</button>
+            @elseif ($currentStep == $totalSteps)
+                <button wire:click="pendaftaran" class="btn btn-success ml-2">Submit</button>
+            @endif
         </div>
+
+        
 
     </form>
 

@@ -40,24 +40,21 @@ class MultiStepForm extends Component
     {
         return view('livewire.multi-step-form');
     }
+
+    public function nextStep()
+    {
+        $this->validateData(); // Validasi data sebelum pindah ke langkah berikutnya
+        $this->currentStep++;
+    }
+
+    public function previousStep()
+    {
+        $this->currentStep--;
+    }
+
     
 
-    public function increaseStep(){
-        $this->resetErrorBag();
-        $this->validateData();
-         $this->currentStep++;
-         if($this->currentStep > $this->totalSteps){
-             $this->currentStep = $this->totalSteps;
-         }
-    }
-
-    public function decreaseStep(){
-        $this->resetErrorBag();
-        $this->currentStep--;
-        if($this->currentStep < 1){
-            $this->currentStep = 1;
-        }
-    }
+    
 
     public function validateData(){
 

@@ -18,6 +18,9 @@ body{
   padding: 25px;
   margin-top: -15px;
 }
+.no-underline {
+  text-decoration: none;
+}
 .btn-primary{
   border-radius: 50px;
   width: 120px;
